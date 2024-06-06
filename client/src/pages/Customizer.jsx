@@ -17,7 +17,7 @@ const Customizer = () => {
 
   const [file, setFile ] = useState('');
 
-  const [promt, setPromt] = useState('');
+  const [prompt, setPrompt] = useState('');
 
   const [generatingImg, setGeneratingImg] = useState(false);
 
@@ -40,13 +40,30 @@ const Customizer = () => {
         />
       case "aipicker":
         return <AiPicker/>
-        
+        prompt={prompt}
+        setPrompt={setPrompt}
+        generatingImg={generatingImg}
+        handleSubmit = {handleSubmit}
+
         
     
       default:
        return null;
     }
 
+  }
+
+  const handleSubmit = async (type) => {
+    if(!prompt) return alert ("Please enter a prompt");
+
+    try {
+      
+    } catch (error) {
+      alert(error)
+    }finally {
+       setGeneratingImg(false);
+       setActiveEditorTab("");
+    }
   }
   const handleDecals = (type, result) =>{
     const decalType = DecalTypes[type];
